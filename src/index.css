@@ -1,0 +1,91 @@
+:root {
+  --bg: #f4ede4;
+  --panel: rgba(255, 251, 246, 0.78);
+  --panel-soft: rgba(255, 249, 242, 0.72);
+  --text: #1c2528;
+  --muted: #5f696c;
+  --muted-strong: #697578;
+  --border: rgba(28, 37, 40, 0.1);
+  --accent-fire: #dc6834;
+  --accent-sand: #d7aa58;
+  --accent-teal: #3b8f93;
+  --accent-deep: #214d55;
+  --shadow-soft:
+    0 18px 42px rgba(101, 68, 34, 0.08),
+    0 6px 18px rgba(28, 37, 40, 0.05);
+
+  font-family:
+    "Aptos",
+    "Segoe UI Variable Display",
+    "Trebuchet MS",
+    sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--text);
+  background:
+    radial-gradient(circle at top left, rgba(231, 108, 57, 0.18), transparent 26%),
+    radial-gradient(circle at 78% 12%, rgba(59, 143, 147, 0.18), transparent 22%),
+    linear-gradient(180deg, #f6efe7, #ece0d0 74%, #e8dbc7);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+h1,
+h2 {
+  margin: 0 0 10px;
+  font-family:
+    "Georgia",
+    "Iowan Old Style",
+    serif;
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  color: var(--text);
+}
+
+h1 {
+  font-size: clamp(3rem, 7vw, 5.6rem);
+}
+
+h2 {
+  font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+#root {
+  min-height: 100vh;
+}
