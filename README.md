@@ -1,73 +1,70 @@
-# React + TypeScript + Vite
+# Vocal
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Vocal is a web app for practicing leadership communication out loud. It lets you pick a workplace scenario, record a spoken response, transcribe it with an open-source ASR model in the browser, edit the transcript, and then analyze how strong the message sounds in a leadership context.
 
-Currently, two official plugins are available:
+## What It Does
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Presents leadership communication scenarios such as missed deadlines, hard feedback, and strategy changes.
+- Records the user's spoken answer in the browser.
+- Transcribes speech with Whisper Tiny via `@huggingface/transformers`.
+- Lets the user edit the transcript before analysis to correct ASR mistakes.
+- Scores the response for executive presence, clarity, ownership, and empathy.
+- Suggests stronger phrase replacements and produces a rewritten leadership-style version.
 
-## React Compiler
+## Product Flow
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+1. Choose a scenario.
+2. Record a response.
+3. Review and edit the transcript.
+4. Click `Analyze` to open the feedback page.
+5. Use `Try again` to return to practice and record another version.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- React 19
+- TypeScript
+- Vite
+- `@huggingface/transformers`
+- In-browser Whisper Tiny speech recognition
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Local Development
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Install dependencies:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Start the development server:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+Run linting:
+
+```bash
+npm run lint
+```
+
+On this Windows setup, PowerShell may block `npm.ps1`. If that happens, use:
+
+```powershell
+npm.cmd run dev
+```
+
+## Notes
+
+- The first transcription run is slower because the Whisper model and WASM runtime are downloaded into the browser cache.
+- The transcript is intentionally editable before analysis because speech recognition errors can distort the coaching output.
+- The app currently runs fully client-side and does not require a backend.
+
+## License
+
+This project is licensed under the MIT License. See [LICENSE](./LICENSE).
